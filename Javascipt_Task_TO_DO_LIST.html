@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS TASK - TO DO LIST</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: sans-serif;
+        }
+        h1{
+            background-color: aquamarine;
+            color: white;
+            padding: 5px;
+        }
+        input,button{
+            padding: 5px;
+        }
+        li{
+            background-color: antiquewhite;
+            margin: 5px;
+            padding: 5px;
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .delete-btn{
+            background-color: red;
+            color: antiquewhite;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>TO-DO LIST</h1>
+    <div>
+        <input id="Task" placeholder="Enter a new task">
+        <button onclick="addToList()">ADD</button>
+    </div>
+    <ul id="to-do-list"></ul>
+    <script>
+        function addToList(){
+            const task=document.getElementById("Task");
+            const text=task.value.trim();
+            if (!text) return;
+            const li=document.createElement("li");
+            li.innerHTML=`${text} <button class="delete-btn" onclick="this.parentElement.remove()">DELETE</button>`;
+            document.getElementById("to-do-list").appendChild(li);
+            task.value="";
+        }
+    </script>
+</body>
+</html>
